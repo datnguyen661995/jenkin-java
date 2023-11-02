@@ -9,4 +9,4 @@
       stable"
   RUN apt-get update  -qq \
       && apt-get install docker-ce-cli -y
-  RUN usermod -aG docker jenkins
+  RUN sudo usermod -aG docker jenkins
