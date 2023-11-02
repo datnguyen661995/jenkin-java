@@ -9,6 +9,5 @@ RUN add-apt-repository \
     stable"
 RUN apt-get update  -qq \
     && apt-get install docker-ce-cli -y
-RUN jenkins-plugin-cli --plugins
 USER jenkins
-RUN usermod -aG docker jenkins
+RUN jenkins-plugin-cli --plugins "blueocean:1.27.8 docker-workflow:572.v950f58993843"
