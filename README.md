@@ -7,4 +7,4 @@ docker run -it -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v 
 <!-- STEP 2 -->
 ngrok config add-authtoken <token>
 <!-- STEP 3 -->
-ngrok http 80
+ngrok http 8080
