@@ -1,16 +1,12 @@
-FROM jenkins/jenkins:2.414.3-jdk17
-USER root
-RUN apt-get update && apt-get install -y lsb-release
-RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
-  https://download.docker.com/linux/debian/gpg
-RUN echo "deb [arch=$(dpkg --print-architecture) \
-  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
-  https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
-RUN apt-get update && apt-get install -y docker-ce-cli
-ENV DOCKER_HOST=tcp://docker:2376
-ENV DOCKER_CERT_PATH=/certs/client
-ENV DOCKER_TLS_VERIFY=1
-ENV JAVA_OPTS="-Dhudson.plugins.git.GitSCM.ALLOW_LOCAL_CHECKOUT=true"
-USER jenkins
-RUN jenkins-plugin-cli --plugins "blueocean:1.27.8 docker-workflow:572.v950f58993843"
+  FROM jenkins/jenkins:lts
+  USER root
+  RUN apt-get update -qq \
+      && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common
+  RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+  RUN add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/debian \
+      $(lsb_release -cs) \
+      stable"
+  RUN apt-get update  -qq \
+      && apt-get install docker-ce=17.12.1~ce-0~debian -y
+  RUN usermod -aG docker jenkins
