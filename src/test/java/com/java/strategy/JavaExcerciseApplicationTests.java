@@ -1,10 +1,10 @@
-package com.datnguyen.jenkin.java;
+package com.java.strategy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JenkinJavaApplicationTests {
+class JavaExcerciseApplicationTests {
 
 	@Test
 	void contextLoads() {
