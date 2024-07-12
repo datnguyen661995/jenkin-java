@@ -9,7 +9,7 @@ node {
             // get some code from a github repository
             git url: 'https://github.com/datnguyen661995/jenkin-java.git',
                 credentialsId: 'springdeploy-user'
-                branch: 'build_cicd_jenkin'
+                branch: 'main'
         }
 
         stage("Build Docker") {
