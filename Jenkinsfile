@@ -1,5 +1,5 @@
 node {
-    def WORKSPACE = "/var/jenkins_home/workspace/spring-demo-deploy"
+    def WORKSPACE = "/var/jenkins_home/workspace/springboot-deploy"
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
 
     try {
